@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="quiz.js"></script>
+  </head>
+  <body>
+    <div id="start" style="display: block">Start Quiz!</div>
+
+    <div id="quiz" style="display: none;" >
+      <div id="question">QQQQQQQQ</div>
+
+      <div id="choices">
+        <div class="choice" id="A" onclick="onPlayerSubmit('A')">AAAA</div>
+        <div class="choice" id="B" onclick="onPlayerSubmit('B')">BBBB</div>
+        <div class="choice" id="C" onclick="onPlayerSubmit('C')">CCCC</div>
+        <div class="choice" id="D" onclick="onPlayerSubmit('D')">DD</div>
+      </div>
+
+    </div>
+    <div id="score" style="display: none"></div>
+    <script src="quiz.js"></script>
+  </body>
+</html>
