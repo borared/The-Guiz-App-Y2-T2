@@ -1,22 +1,39 @@
-*body{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: "Rosemartin Custom";
+  src: url("Font/Rosemartin.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 /* General Reset & Base Styles */
 .custom-navbar {
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
-  background-color: #f8f9fa;
-  font-family: sans-serif;
+  padding: 20px 40px;
+  background-color: blue;
+  color: white;
+  font-family: "Arial", sans-serif;
 }
-
+.logo{
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+  gap: 7px;
+  font-size: 1.5rem;
+}
 .brand {
+  display: flex;
+  flex-grow: 2;
   font-size: 1.25rem;
   text-decoration: none;
-  color: rgba(0,0,0,.9);
+  color: white;
+  font-weight: 600;
   margin-right: 1rem;
 }
 
@@ -24,7 +41,7 @@
 .nav-content {
   display: flex;
   flex-grow: 1;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -33,68 +50,68 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  font-weight: 500;
+}
+
+.nav-links li {
+  transition: transform 0.3s ease-in-out;
 }
 
 .nav-links a {
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: rgba(0,0,0,.5);
+  color: white;
+  display: block;
 }
 
-.nav-links a:hover, .nav-links a.active {
-  color: rgba(0,0,0,.9);
+.nav-links li:hover {
+  transform: translateY(-8px);
 }
-
-.nav-links a.disabled {
-  color: rgba(0,0,0,.3);
-  pointer-events: none;
+button .btn-create-quiz{
+  background-color: red;
+  
 }
-
-/* Dropdown Logic */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
+.btn-create{
+  display: flex;
+  width: 120px;
+  height: 30px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
   background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  z-index: 1;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
 }
 
-.dropdown-content a {
-  display: block;
-  color: black;
-  padding: 12px 16px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.btn-create:hover {
+  background-color: #12c13b;
+  color: white;
+  transform: translateY(-8px);
 }
 
 /* Search Form */
 .search-form {
   display: flex;
+  flex-grow: 1;
   gap: 5px;
 }
 
 .search-form input {
+  width: 100%;
   padding: 5px 10px;
   border: 1px solid #ced4da;
-  border-radius: 4px;
+  border-radius: 15px;
 }
 
 .search-form button {
   padding: 5px 15px;
-  color: #28a745;
   border: 1px solid #28a745;
   background: transparent;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
+  background: #12c13b;
+  color: white;
 }
 
 .search-form button:hover {
@@ -103,8 +120,24 @@
 }
 
 /* Mobile Responsiveness */
-.menu-toggle, .hamburger {
+.menu-toggle,
+.hamburger {
   display: none;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+}
+#StartBtn{
+  margin-top: 30px;
+  background-color: rgb(21, 197, 21);
+  width: 200px;
+  height: 50px;
+  font-size: 2rem;
 }
 
 @media (max-width: 992px) {
