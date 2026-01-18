@@ -6,7 +6,7 @@ const dom_container = document.querySelector(".container");
 
 // Load questions from localStorage
 let questions = JSON.parse(localStorage.getItem("quizQuestions")) || [];
-let editingIndex = -1; // Track if we're editing or adding
+let editingIndex = -1; // Track if we're editing
 
 dom_Add.addEventListener("click", onAdd);
 dom_cancel.addEventListener("click", onCancel);
@@ -14,6 +14,7 @@ dom_form.addEventListener("submit", onSubmit);
 
 // Load saved questions on page load
 loadSavedQuestions();
+attachDefaultQuestionListeners();
 
 function hide(element) {
   // TODO
@@ -25,19 +26,48 @@ function show(element) {
   element.style.display = "flex";
 }
 
-function loadSavedQuestions() {
-  // Clear existing cards (except default ones if any)
-  const cards = dom_container.querySelectorAll(".question-card");
-  cards.forEach((card) => card.remove());
+function attachDefaultQuestionListeners() {
+  const defaultCards = document.querySelectorAll(".question-card");
+  defaultCards.forEach((card, index) => {
+    const editIcon = card.querySelector(".edit-icon");
+    const deleteIcon = card.querySelector(".delete-icon");
 
+    if (editIcon && !editIcon.hasListener) {
+      editIcon.hasListener = true;
+      editIcon.addEventListener("click", function () {
+        const questionText = card.querySelector(".question-text").textContent;
+        editingIndex = -1;
+        document.querySelector("#question").value = questionText;
+        document.querySelector("#optionA").value = "";
+        document.querySelector("#optionB").value = "";
+        document.querySelector("#optionC").value = "";
+        document.querySelector("#optionD").value = "";
+        document.querySelector("#correctAnswer").value = "";
+
+        const submitBtn = document.querySelector("#submitAddQ");
+        submitBtn.textContent = "Update Question";
+        show(dom_AddContent);
+      });
+    }
+
+    // Add delete listener
+    if (deleteIcon && !deleteIcon.hasListener) {
+      deleteIcon.hasListener = true;
+      deleteIcon.addEventListener("click", function () {
+        card.remove();
+      });
+    }
+  });
+}
+
+function loadSavedQuestions() {
   // Load and display saved questions
   questions.forEach((q, index) => {
-  addQuestionCard(q, index);
+    addQuestionCard(q, index);
   });
 }
 
 function addQuestionCard(questionObj, index) {
-  // Create new question card
   const newCard = document.createElement("div");
   newCard.className = "question-card";
   newCard.innerHTML = `
@@ -48,7 +78,7 @@ function addQuestionCard(questionObj, index) {
     </div>
   `;
 
-  // Add edit functionality
+  // Add edit
   const editIcon = newCard.querySelector(".edit-icon");
   editIcon.addEventListener("click", function () {
     editingIndex = index;
@@ -58,13 +88,13 @@ function addQuestionCard(questionObj, index) {
     document.querySelector("#optionC").value = questionObj.optionC;
     document.querySelector("#optionD").value = questionObj.optionD;
     document.querySelector("#correctAnswer").value = questionObj.correctAnswer;
-  
+
     const submitBtn = document.querySelector("#submitAddQ");
     submitBtn.textContent = "Update Question";
     show(dom_AddContent);
   });
 
-  // delete 
+  // delete
   const deleteIcon = newCard.querySelector(".delete-icon");
   deleteIcon.addEventListener("click", function () {
     questions.splice(index, 1);
@@ -72,7 +102,7 @@ function addQuestionCard(questionObj, index) {
     loadSavedQuestions();
   });
 
-  // Insert 
+  // Insert
   const btnAdd = document.querySelector(".btn-add");
   dom_container.insertBefore(newCard, btnAdd);
 }
@@ -81,8 +111,6 @@ function onAdd() {
   // Reset when adding new question
   editingIndex = -1;
   dom_form.reset();
-  const submitBtn = document.querySelector("#submitAddQ");
-  submitBtn.textContent = "Add Question";
   show(dom_AddContent);
 }
 
@@ -104,7 +132,7 @@ function onSubmit(e) {
   const optionD = document.querySelector("#optionD").value;
   const correctAnswer = document.querySelector("#correctAnswer").value;
 
-  // Create question 
+  // Create question
   const questionObj = {
     question,
     optionA,
