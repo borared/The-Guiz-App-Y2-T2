@@ -32,7 +32,7 @@ function loadSavedQuestions() {
 
   // Load and display saved questions
   questions.forEach((q, index) => {
-    addQuestionCard(q, index);
+  addQuestionCard(q, index);
   });
 }
 
@@ -52,20 +52,19 @@ function addQuestionCard(questionObj, index) {
   const editIcon = newCard.querySelector(".edit-icon");
   editIcon.addEventListener("click", function () {
     editingIndex = index;
-    // Populate form with existing data
     document.querySelector("#question").value = questionObj.question;
     document.querySelector("#optionA").value = questionObj.optionA;
     document.querySelector("#optionB").value = questionObj.optionB;
     document.querySelector("#optionC").value = questionObj.optionC;
     document.querySelector("#optionD").value = questionObj.optionD;
     document.querySelector("#correctAnswer").value = questionObj.correctAnswer;
-    // Change button text and show form
+  
     const submitBtn = document.querySelector("#submitAddQ");
     submitBtn.textContent = "Update Question";
     show(dom_AddContent);
   });
 
-  // Add delete functionality
+  // delete 
   const deleteIcon = newCard.querySelector(".delete-icon");
   deleteIcon.addEventListener("click", function () {
     questions.splice(index, 1);
@@ -73,13 +72,13 @@ function addQuestionCard(questionObj, index) {
     loadSavedQuestions();
   });
 
-  // Insert before the button
+  // Insert 
   const btnAdd = document.querySelector(".btn-add");
   dom_container.insertBefore(newCard, btnAdd);
 }
 
 function onAdd() {
-  // Reset form for adding new question
+  // Reset when adding new question
   editingIndex = -1;
   dom_form.reset();
   const submitBtn = document.querySelector("#submitAddQ");
@@ -97,7 +96,7 @@ function onCancel() {
 function onSubmit(e) {
   e.preventDefault();
 
-  // Get form values
+  // Get value from user inputs
   const question = document.querySelector("#question").value;
   const optionA = document.querySelector("#optionA").value;
   const optionB = document.querySelector("#optionB").value;
@@ -105,7 +104,7 @@ function onSubmit(e) {
   const optionD = document.querySelector("#optionD").value;
   const correctAnswer = document.querySelector("#correctAnswer").value;
 
-  // Create question object
+  // Create question 
   const questionObj = {
     question,
     optionA,
@@ -127,12 +126,7 @@ function onSubmit(e) {
   // Save to localStorage
   localStorage.setItem("quizQuestions", JSON.stringify(questions));
 
-  // Reload UI
   loadSavedQuestions();
-
-  // Clear form
   dom_form.reset();
-
-  // Hide the form
   hide(dom_AddContent);
 }
