@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/Image/FavQuiz.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Quiz</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="custom-navbar">
+      <div class="logo">
+        <img src="/Image/IconBrand.png" alt="" style="width: 35px" />
+        <a
+          class="brand"
+          style="font-family: 'Rosemary', cursive; font-size: 24px"
+          href="/index.html"
+          >ChhloyQuiz</a
+        >
+      </div>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+      <div class="nav-content">
+        <ul class="nav-links">
+          <li><a href="/index.html" class="active">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <a href="/Edit/edit.html" class="btn-create">Edit Quiz</a>
+        <a href="/Player/player.html" class="btn-create">Play Quiz</a>
+      </div>
+    </nav>
+    <div class="question-container">
+      <div class="addQuestion">
+        <h2>Edit Your Quiz Questions Here</h2>
+      </div>
+      <div class="container">
+        <div class="question-card">
+          <span class="question-text">What does HTML stand for?</span>
+          <div class="actions">
+            <span class="edit-icon">&#9998;</span>
+            <span class="delete-icon">&#128465;</span>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <span class="question-text">What does CSS stand for?</span>
+          <div class="actions">
+            <span class="edit-icon">&#9998;</span>
+            <span class="delete-icon">&#128465;</span>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <span class="question-text">What does JS stand for?</span>
+          <div class="actions">
+            <span class="edit-icon">&#9998;</span>
+            <span class="delete-icon">&#128465;</span>
+          </div>
+        </div>
+        <div class="btn-add">
+          <button class="btn-create" id="addQ">Add question</button>
+        </div>
+      </div>
+    </div>
+    <div class="addContent" style="display: none" id="AddContent">
+      <div class="addContainer">
+        <div class="addHead">
+            <i style="color: white; font-size: 1.3rem; margin-top: -2px;" class="bx bx-clipboard-plus"></i>
+          <h2>Add New Question</h2>
+        </div>
+        <form action="" class="formAction">
+          <label for="question">Question:</label>
+          <input type="text" id="question" name="question" required />
+
+          <label for="optionA">Option A:</label>
+          <input type="text" id="optionA" name="optionA" required />
+
+          <label for="optionB">Option B:</label>
+          <input type="text" id="optionB" name="optionB" required />
+
+          <label for="optionC">Option C:</label>
+          <input type="text" id="optionC" name="optionC" required />
+
+          <label for="optionD">Option D:</label>
+          <input type="text" id="optionD" name="optionD" required />
+
+          <label for="correctAnswer">Correct Answer:</label>
+          <select id="correctAnswer" name="correctAnswer" required>
+            <option value="">Select the correct option</option>
+            <option value="A">Option A</option>
+            <option value="B">Option B</option>
+            <option value="C">Option C</option>
+            <option value="D">Option D</option>
+          </select>
+
+          <div class="form-buttons">
+            <button type="submit" class="btn-create" id="submitAddQ">
+              Add Question
+            </button>
+            <button type="button" class="btn-cancel" id="cancelBtn">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="edit.js"></script>
+  </body>
+</html>

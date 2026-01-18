@@ -7,6 +7,7 @@ const dom_choiceC = document.querySelector("#C");
 const dom_choiceD = document.querySelector("#D");
 const dom_score = document.querySelector("#score");
 const dom_start = document.querySelector("#start");
+const dom_startGame = document.querySelector("#startGame");
 
 dom_start.addEventListener("click", onStart);
 
@@ -57,6 +58,7 @@ function onStart() {
   // Render the current question
   // Display the quiz view,
   hide(dom_start);
+  hide(dom_startGame);
   show(dom_quiz);
   renderQuestion(dom_score);
 }

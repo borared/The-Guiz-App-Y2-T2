@@ -2,15 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+     <link rel="icon" type="image/png" href="/Image/FavQuiz.png" />
     <title>Quiz</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="player.css" />
+    <link rel="stylesheet" href="/style.css" />
     <script defer src="quiz.js"></script>
   </head>
   <body>
-    <div id="start" style="display: block">Start Quiz!</div>
+    <nav class="custom-navbar">
+      <div class="logo">
+        <img src="/Image/IconBrand.png" alt="" style="width: 35px" />
+        <a
+          class="brand"
+          style="font-family: 'Rosemary', cursive; font-size: 24px"
+          href="/index.html"
+          >ChhloyQuiz</a
+        >
+      </div>
 
-    <div id="quiz" style="display: none;" >
-      <div id="question">QQQQQQQQ</div>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+      <div class="nav-content">
+        <ul class="nav-links">
+          <li><a href="/index.html" class="active">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <a href="/Edit/edit.html" class="btn-create">Edit Quiz</a>
+      </div>
+    </nav>
+    <div class="headerQuiz" id="startGame">
+      <h1 id="ready" style="font-family: 'Rosemary', cursive; font-size: 3rem">
+        Ready to take a Quiz?
+      </h1>
+      <div id="start" style="display: block">Let's Go</div>
+
+      <dotlottie-wc
+        src="https://lottie.host/015b37d6-5bf2-44a6-aaff-54ef576e80b8/rIaSZSWYmb.lottie"
+        style="width: 300px; height: 300px"
+        autoplay
+        loop
+      ></dotlottie-wc>
+    </div>
+
+    <div class="mainQuiz" id="quiz" style="display: none">
+      <div
+        id="question"
+        style="font-family: 'Rosemary', cursive; font-size: 3rem"
+      >
+        QQQQQQQQ
+      </div>
 
       <div id="choices">
         <div class="choice" id="A" onclick="onPlayerSubmit('A')">AAAA</div>
@@ -19,8 +60,25 @@
         <div class="choice" id="D" onclick="onPlayerSubmit('D')">DD</div>
       </div>
 
+      <dotlottie-wc
+        src="https://lottie.host/fca5361e-ea6d-4a5f-a32e-c5ba60f3dd5b/9R2W1Gx1yf.lottie"
+        style="width: 200px; height: 100px"
+        autoplay
+        loop
+        id="thinkLottie"
+      ></dotlottie-wc>
     </div>
-    <div id="score" style="display: none"></div>
+    <div id="score" style="display: none">
+    </div>
+    
     <script src="quiz.js"></script>
+    <script
+      src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"
+      type="module"
+    ></script>
+    <script
+      src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"
+      type="module"
+    ></script>
   </body>
 </html>
